@@ -7,9 +7,11 @@
 
     <div class="py- m-6">
     <div class="w-full m-2">
+        @hasanyrole('writer|admin')
             <a href="#" class="m- p-2 bg-green-400 rounded">
                 Create Post
             </a>
+            @endhasanyrole
         </div>
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       
@@ -32,11 +34,16 @@
           <tr>
             <td class="px-6 py-4 whitespace-nowrap">{{ $post->id}}</td>
             <td class="px-6 py-4 whitespace-nowrap">{{ $post->title}}</td>
+       
 
           
             <td class="px-6 py-4 text-right text-sm">
-                <a href="#" class="m-2 p-2 bg-green-400 rounded">Szerkesztés</a>
+            @role('editer|admin')
                 <a href="#" class="m-2 p-2 bg-green-400 rounded">Törlés</a>
+            @endrole
+            @role('admin')
+                <a href="#" class="m-2 p-2 bg-green-400 rounded">Szerkesztés</a>
+                @endrole
             </td>
           </tr>
           @endforeach
